@@ -32,13 +32,13 @@ void init_7_seg()
     
 }
 
-void display_digit(uint8_t pos, uint8_t value)
+void display_digit(uint8_t pos, uint8_t value, uint8_t decimal)
 {
     pos %= 4;
     value %= 11;
     
     digitalWrite(CS, LOW);
-    shiftOut(SER, CLK, LSBFIRST, segments[value]);
+    shiftOut(SER, CLK, LSBFIRST, segments[value]+(decimal/decimal));
     digitalWrite(CS, HIGH);
     
     digitalWrite(digits[pos], LOW);
